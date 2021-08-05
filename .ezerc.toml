@@ -1,0 +1,55 @@
+# ========================================
+# TOOL CONFIG
+# ========================================
+[semgrep]
+PRINT_TIMING_INFO = false
+EXCLUDE = [
+    "tests",
+    "tests-integration"
+]
+REPORT_FILE = "reports/semgrep-report.json"
+#CONFIGS = [
+#    "p/ci"
+#]
+CONFIGS = [
+    "p/ci",
+    "p/python",
+    "r/python",
+    "p/java",
+    "r/java",
+    "p/ruby",
+    "r/ruby",
+    "r/node",
+    "p/docker",
+    "r/docker"
+]
+
+[trufflehog]
+SOURCE = "."
+INCLUDE_FULL_REASON = true
+IGNORED_FILES = [
+    "node_modules/",
+    "__fixtures__/",
+    "__snapshots__/"
+]
+EXCLUDE = [
+    ".*(node_modules|target|build|dist)$",
+    ".*\\.(jpe?g|png|svg|eot|ttf|exe|map|lock|woff|pytest_cache)$",
+    ".*-report.json$",
+    ".*\\.DS_Store"
+]
+NO_ENTROPY = false
+REPORT_FILE = "reports/trufflehog-report.json"
+ADDITIONAL_ARGUMENTS = " --no-entropy"
+
+
+# ========================================
+# REPORT CONFIG
+# ========================================
+
+# ========================================
+# SCAN CONFIG
+# ========================================
+[scan]
+tools = ["semgrep", "trufflehog"]
+reporters = ["json", "console"]
