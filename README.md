@@ -12,7 +12,7 @@ to manually scan your organisations estate without expensive tooling
 
 # Open used Data Source
 
-sky-uk's publicly accessible projects used in this case
+godotengine's publicly accessible projects used in this case
 
 Publicly available at API
 https://api.github.com/orgs/xxx/repos?per_page=100
